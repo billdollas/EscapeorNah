@@ -68,12 +68,23 @@ Include the full list of features that you are considering for POST MVP
 
 Based on the initial logic defined in the previous game phases section try and breakdown the logic further into functional components, and by that we mean functions.  Does your logic indicate that code could be encapsulated for the purpose of reusablility.  Once a function has been defined it can then be incorporated into a class as a method. 
 
+-Make sure I have a timer counting down from 30 secs
+-Function that would increment time by 5secs attach it to time icon
+-Use a .key method, attach to my whole document, so that it can be manipulated by the up, down, left right keys
+- A function that randomizes the key in 3 diff positions for first level
+- For the second level have a function that randomizes the key in 6 diff positions
+- have key and time icon fade in and out in css
+- have a function when the avatar 'div' comes across 1st key in first level it unlocks the second level
+- have a function that when the avatar comes across 3 keys in 2nd level it advances
+- have a function in the 3rd level that collects 5 out of 6 keys but doesnt let the last key be chosen or remotely show
+-have a function that will only show the time icon when there 20secs on the clock
+
 Time frames are also key in the development cycle.  You have limited time to code all phases of the game.  Your estimates can then be used to evalute game possibilities based on time needed and the actual time you have before game must be submitted. 
 
 | Component | Priority | Estimated Time | Time Invetsted | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
 | Logic | H | 10hrs|  |  |
-| CSS | Mid | 8hrs|  |  |
+| CSS | H | 24hrs|  |  |
 | JavaScript | H | 24hrs|  |  |
 | Pseudocode | Mid | 4hrs| 12hrs |  |
 | Component 1 | H | 10hrs| 12hrs |  |
