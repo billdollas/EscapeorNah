@@ -88,7 +88,7 @@ $(document).ready(function() {
 
 };
 
-setInterval(randomKey, 1000);
+setInterval(randomKey, 5000);
 
 
 function randomKey() {
