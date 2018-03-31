@@ -11,7 +11,6 @@
   background-position-y: -124px;
   background-position-x: -20px;  /*this is showing the front of male
   inside of the position of the image */
-
 }
 
 .leKey {
@@ -29,6 +28,7 @@
   height: 500px;
   background: url('../toproom1.jpg') no-repeat;
   background-size: cover;
+  margin: auto;
   /*display: flex;*/
   /*overflow: hidden;*/
   /*justify-content: center;*/

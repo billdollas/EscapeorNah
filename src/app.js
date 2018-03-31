@@ -21,11 +21,11 @@ $(document).ready(function() {
     switch(position.keyCode) {
         case 38: maleWalk('up');
         break;
-        case 39: maleWalk('right');
+        case 37: maleWalk('right');
         break;
         case 40: maleWalk('down');
         break;
-        case 37: maleWalk('left');
+        case 39: maleWalk('left');
         break;
       }
     const male = $('.male')[0].getBoundingClientRect();
@@ -63,11 +63,22 @@ $(document).ready(function() {
   //takes off pixels and just gives me a number
   let guyLeft = $('.male').css('left');
   let npLeft = guyLeft.replace('px','');
+  let male = $('.male')[0].getBoundingClientRect();
+  let room = $('.room')[0].getBoundingClientRect();
+  //getting all dimensions of elements w variables guyPos & roomIn
+
+   console.log(male);
+  // let xRoom = roomIn.x + roomIn.width;
+  // adding the x to the width of the room
+  // guyPos -= xRoom;
+  // let yRoom = roomIn.y + roomIn.height;
+  // adding the y to the height of the room
+  // guyPos -= yRoom;
 
 
   if (direction === 'up') {
   $('.male').css('top', Number(np)-10 + 'px');
-}
+ }
   if (direction === 'down') {
 
 
