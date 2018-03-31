@@ -11,10 +11,10 @@ $(document).ready(function() {
 
   $('.male').addClass('frontFaceStand');
 
-});
+    // });
 
 
-$(document).keydown(function(position){
+  $(document).keydown(function(position){
   if(currentBtn) {
 
     currentBtn = position.keyCode;
@@ -30,20 +30,34 @@ $(document).keydown(function(position){
       }
     const male = $('.male')[0].getBoundingClientRect();
     const key = $('.leKey')[0].getBoundingClientRect();
+    const box = $('.room')[0].getBoundingClientRect();
     // 37 is the left key 38 is the up key 39 is the right 40 is the down key
 
     if (male.x < key.x + key.width && male.x + male.width > key.x && male.y
     < key.y + key.height && male.height + male.y > key.y) {
       console.log('male');
     }
+  //   if (male.x > box.x + male.y > box.y && male.x + box.w < box.x + male.w && male.y +
+  //   male.h < box.y + box.h) {
+  //   console.log('not leaving box');
+  // }
   }
-});
+  });
 
-//to contain male i have to find dimensions of the box and basically do the same if for
-//male and box, male x > box x, male y > box y, male x + width < box x + width, male y + height < box y + height
+  // wrap this if statement around box so male wont leave box
+  // const male= $('.male')[0].getBoundingClientRect();
+  // const box = $('.room')[0].getBoundingClientRect();
+  // if (male.x > box.x + male.y > box.y && male.x + box.w < box.x + male.w && male.y +
+  //   male.h < box.y + box.h) {
+  //   console.log('not leaving box');
+  // }
+
+  //to contain male i have to find dimensions of the box and basically do the same if for
+  //male and box, male x > box x, male y > box y, male x + width < box x +
+  //width, male y + height < box y + height
 
 
-function maleWalk(direction) {
+  function maleWalk(direction) {
   let guy = $('.male').css('top');
   let np = guy.replace('px','');
   //takes off pixels and just gives me a number
@@ -71,47 +85,80 @@ function maleWalk(direction) {
     $('.male').css('left', Number(npLeft) - 10 + 'px');
   }
 
+
 };
 
+setInterval(randomKey, 1000);
 
 
-// $(document).ready(function() {
-// $('.male')[0].getBoundingClientRect();
-// $('.leKey')[0].getBoundingClientRect();
-// console.log($('.male')[0].getBoundingClientRect());
+function randomKey() {
+  const box = $('.room')[0].getBoundingClientRect();
+  const key = document.querySelector('.leKey');
+  const keyPos = $('.leKey')[0].getBoundingClientRect();
+  // const intial = 0;
+  // const pardonBack= false;
+  // const bounceId = setInterval(bounce,3);
 
 
-// const male = {x: 10, y:110, width: 95, height:70}
-// const key = {x: 10, y:10, width: 50, height: 50}
-
-// const male = $('.male')[0].getBoundingClientRect();
-// const key = $('.leKey')[0].getBoundingClientRect();
-// console.log(male);
-
-//   key.bind('EnterFrame',function() {
-//   if (male.x < key.x + key.width && male.x + male.width > key.x && male.y
-// < key.y + key.height && male.height + male.y > key.y) {
-// console.log('male');}
-// });
+ // console.log(box);
 
 
-$('.leKey').on('click',function(e) {
-//   if (male.x < key.x + key.width && male.x + male.width > key.x && male.y
-// < key.y + key.height && male.height + male.y > key.y) {
-// }
-console.log('male');
-});
-// setInterval(function(){
-//   if (male.x < key.x + key.width &&
-//    male.x + male.width > key.x &&
-//    male.y < key.y + key.height &&
-//    male.height + male.y > key.y) {
-//     // console.log('touched');
-// }
-// // console.log('touchagain');
-// }, 20);
-// // console.log('touched');
-// });
+
+  let xPos = Math.random() * (box.x + box.width);
+  xPos -= keyPos.width;
+  let yPos = Math.random() * (box.y + box.height);
+  yPos -= keyPos.height;
+
+
+
+  key.style.left = xPos + 'px'
+  key.style.top = yPos + 'px'
+  key.style.right = yPos + 'px'
+
+  console.log(xPos);
+
+//   box.css({'top:' left + 'px', 'left:' left + 'px'});
+// }, 1000);
+
+};
+
+randomKey();
+
+})
+// END OF DOCUMENT BILLS
+
+
+//this function workkks
+
+
+
+// function randomKey() {
+//   const box = $('.room')[0].getBoundingClientRect();
+//   const key = document.querySelector('.leKey');
+//   const keyPos = $('.leKey')[0].getBoundingClientRect();
+
+//   let xPos = Math.random() * keyPos.x;
+//   let yPos = Math.random() * keyPos.y;
+
+//   key.style.left = xPos + 'px'
+//   key.style.top = yPos + 'px'
+//   key.style.right = yPos + 'px'
+
+//   console.log(keyPos);
+
+// };
+
+// randomKey();
+
+//this function works and on refresh it moves the key slightly
+//just in case i break the play one
+
+
+
+
+
+
+
 
 
 //   switch (maleStep) {
@@ -154,7 +201,7 @@ console.log('male');
 //     break;
 //   }
 // }
-
+// });
 
 
 
