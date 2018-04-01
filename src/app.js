@@ -76,10 +76,10 @@ $(document).ready(function() {
   // guyPos -= yRoom;
 
 
-  if (direction === 'up') {
+  if (direction === 'up' && male.y > -9) {
   $('.male').css('top', Number(np)-10 + 'px');
  }
-  if (direction === 'down') {
+  if (direction === 'down' && male.y < 376) {
 
 
     $('.male').css('top', Number(np)+ 10 + 'px');
@@ -88,11 +88,11 @@ $(document).ready(function() {
 
   }
 
-  if (direction ==='left') {
+  if (direction ==='left' && male.x < 713) {
     $('.male').css('left', Number(npLeft)+ 10 + 'px');
   }
 
-  if(direction ==='right') {
+  if(direction ==='right' && male.x > 273) {
     $('.male').css('left', Number(npLeft) - 10 + 'px');
   }
 
@@ -111,13 +111,13 @@ function randomKey() {
   // const bounceId = setInterval(bounce,3);
 
 
- // console.log(box);
+  console.log("here", box);
 
 
-
-  let xPos = Math.random() * (box.x + box.width);
+  let xPos = Math.floor((Math.random() * 490) + 40);
+  //the mathrandom is randomizing numbers bet 0 & 490
   xPos -= keyPos.width;
-  let yPos = Math.random() * (box.y + box.height);
+  let yPos = Math.floor((Math.random() * 480) + 20);
   yPos -= keyPos.height;
 
 
