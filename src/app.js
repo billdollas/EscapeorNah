@@ -9,8 +9,8 @@ $(document).ready(function() {
   $('.male').addClass('frontFaceStand');
 
     // });
-
-    $(document).ready(function() {
+    // this is le landing page fade out function
+  $(document).ready(function() {
 
     $('body').click(function() {
 
@@ -22,6 +22,7 @@ $(document).ready(function() {
     });
 
 
+   //this is assigning le keys to le up, le down, le left and le right keys
   $(document).keydown(function(position){
   if(currentBtn) {
 
@@ -36,22 +37,44 @@ $(document).ready(function() {
         case 39: maleWalk('left');
         break;
       }
+
+      // this is le doing the collision detection
     const male = $('.male')[0].getBoundingClientRect();
     const key = $('.leKey')[0].getBoundingClientRect();
     const box = $('.room')[0].getBoundingClientRect();
     // 37 is the left key 38 is the up key 39 is the right 40 is the down key
 
-    if (male.x < key.x + key.width && male.x + male.width > key.x && male.y
-    < key.y + key.height && male.height + male.y > key.y)
+    let collision = male.x < key.x + key.width && male.x + male.width > key.x && male.y
+    < key.y + key.height && male.height + male.y > key.y;
+
+    if (collision)
     {
 
       console.log('male');
       //console logging current position of male as key is pressed
 
-      // $('.leKey').removeClass('leKey');
-     //  so when i remove class of key, the randomization console logs error ?!
+      $('.leKey').removeClass('leKey');
+      $('.room').hide();
+      $('.winning').fadeIn('fast');
+      clearInterval(inter);
 
-    }
+      clearInterval(intNumber);
+     //  so when i remove class of key, the randomization console logs error ?!
+   }
+
+   else if (!collision && count === 0) {
+    $('.room').hide();
+    $('.losing').fadeIn('fast');
+    console.log('pero like');
+   }
+
+   else {
+    // $('.leKey').addClass('leKey');
+
+   }
+
+   //still console logging an error on lekey after key is grabbed, its not doing it
+   // on the randomization of the keys
 
 
 
@@ -74,6 +97,8 @@ $(document).ready(function() {
   //male and box, male x > box x, male y > box y, male x + width < box x +
   //width, male y + height < box y + height
 
+  // this function is making my genderless character move in general
+  //also containing genderless into room except on the left side
 
   function maleWalk(direction) {
   let guy = $('.male').css('top');
@@ -86,10 +111,11 @@ $(document).ready(function() {
   //getting all dimensions of elements w variables guyPos & roomIn
 
    console.log(male);
-  // let xRoom = roomIn.x + roomIn.width;
+  let xRoom = room.x + room.width;
+
   // adding the x to the width of the room
   // guyPos -= xRoom;
-  // let yRoom = roomIn.y + roomIn.height;
+  let yRoom = room.y + room.height;
   // adding the y to the height of the room
   // guyPos -= yRoom;
 
@@ -97,26 +123,26 @@ $(document).ready(function() {
   //BACK BUT WHEN I PRESS DOWN IT DOESNT WANT TO GO BACK TO THE FRONT FACE OF
   //THE CHARACTER
 
-  if (direction === 'up') {
+  // if (direction === 'up') {
 
-    $('.male').css('top', Number(np)-10 + 'px');
-    // $('.male').addClass('backBackStand');
-    //once i press up then down it stays at back
-    // $('.male').addClass('backGnaStep');
-    // $('.male').addClass('backLeftFwd');
-    // $('.male').addClass('backLeftStep');
-    // $('.male').addClass('backLeftTouch');
-    // $('.male').addClass('backLeftDone');
-    // $('.male').addClass('backRightUp');
-    // $('.male').addClass('backRightStep');
-    // $('.male').addClass('backFin');
-  }
+  //   $('.male').css('top', Number(np)-12 + 'px');
+  //   // $('.male').addClass('backBackStand');
+  //   //once i press up then down it stays at back
+  //   // $('.male').addClass('backGnaStep');
+  //   // $('.male').addClass('backLeftFwd');
+  //   // $('.male').addClass('backLeftStep');
+  //   // $('.male').addClass('backLeftTouch');
+  //   // $('.male').addClass('backLeftDone');
+  //   // $('.male').addClass('backRightUp');
+  //   // $('.male').addClass('backRightStep');
+  //   // $('.male').addClass('backFin');
+  // }
 
 
-  if (direction === 'down') {
-    $('.male').css('top', Number(np)+10 + 'px');
-    $('.male').addClass('frontFaceStand');
-  }
+  // if (direction === 'down') {
+  //   $('.male').css('top', Number(np)+ 12 + 'px');
+  //   $('.male').addClass('frontFaceStand');
+  // }
 
   // if (direction === 'left') {
   //   $('.male').css('left', Number(npLeft)+ 10 + 'px');
@@ -124,15 +150,15 @@ $(document).ready(function() {
   // }
 
 
-  if (direction === 'up' && male.y > 48) {
-  $('.male').css('top', Number(np)-10 + 'px');
+  if (direction === 'up' && male.y > room.y) {
+  $('.male').css('top', Number(np)-5 + 'px');
   // $('.male').addClass('backBackStand');
 
  }
 
 
   if (direction === 'down' && male.y < 400) {
-    $('.male').css('top', Number(np)+ 10 + 'px');
+    $('.male').css('top', Number(np)+ 5 + 'px');
     // $('.male').addClass('frontFaceStand');
 
     // alert(Number(np)+10);
@@ -141,22 +167,25 @@ $(document).ready(function() {
 
 
   if (direction ==='left' && male.x < 750) {
-    $('.male').css('left', Number(npLeft)+ 10 + 'px');
+    $('.male').css('left', Number(npLeft)+ 5 + 'px');
     // $('.male').addClass('rightSideStand');
     // $('.male').addClass('');
+    //$('.room').innerWidth() added this to contain from the left side
+    // when resizing screen didnt work
   }
 
-  if(direction ==='right' && male.x > 330) {
-    $('.male').css('left', Number(npLeft) - 10 + 'px');
+  if(direction ==='right' && male.x > room.x) {
+    $('.male').css('left', Number(npLeft) - 5 + 'px');
   }
 
 
 };
 
-
-//this }; gucci 127
-setInterval(randomKey, 5000);
-
+//this function is randomizing key within le box
+//this }; gucci 154
+let intNumber = setInterval(randomKey, 1000);
+//original time 2000
+//clearInterval(intNumber)
 
 function randomKey() {
   const box = $('.room')[0].getBoundingClientRect();
@@ -180,7 +209,8 @@ function randomKey() {
 
   key.style.left = xPos + 'px'
   key.style.top = yPos + 'px'
-  key.style.right = yPos + 'px'
+  key.style.right = xPos + 'px'
+  key.style.bottom = yPos + 'px'
 
   console.log(xPos);
 
@@ -191,21 +221,138 @@ function randomKey() {
 
 randomKey();
 
-})
+// this le function is making my timer countdown from 30secs down
 
-// function seconds () {
+let count = 31;
+$('.timer').html(count);
 
-//   var now = new Date().getTime();
+let inter = setInterval(function lose() {
 
-//   var secDown = lose - $.now();
 
-//   var seconds = Math.floor((secDown % (1000 * 60)) / 1000);
 
-//   console.log(seconds)
-//LOSING LOGIC SECONDS COUNTDOWN
-// }
+  if (count === 1) {
+    clearInterval(inter);
+    // $('.timer').html(count);
+    $('.room').hide();
+    $('.losing').fadeIn('slow');
+}
 
-// END OF DOCUMENT BILLS
+  count--;
+
+  console.log(count);
+}, 1000);
+
+
+
+
+
+//note to self
+//research secs time in jquery
+//try out doing a div with picture of door then put
+//fade out when door opens
+//back isnt properly alligned with screen
+//find escape or nah font
+//research how to apply a sound for when key is found
+//also apply sound to when body is click
+//fade in effect for losing logic
+// losing logic should also go in winning logic else if
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//copy and paste functions that work below, just in case they break during play
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}) // END OF DOCUMENT BILLS
 
 
 //this function workkks

@@ -1,6 +1,19 @@
 
+
+@font-face {
+  font-family: pixel;
+  src: url('../lefont/rounded-pixel-7/rounded_pixel-7.ttf');
+}
+
+
+
+
+
 body{
   overflow: hidden;
+  background: black;
+  margin: 0;
+  padding: 0;
 }
 
 .back {
@@ -8,14 +21,71 @@ body{
   width: 100vw;
   height: 100vh;
   padding: 0px;
-  margin: 0px;
-
+  margin: 0px auto;
+  /*display: flex;*/
 }
 
-.button {
- /* margin-top: 500px;*/
-  /*z-index: 1;*/
+
+.intro {
+  padding-top:15%;
+  text-align: center;
 }
+
+.mainName {
+  font-family: pixel;
+  margin: auto;
+  font-size: 80pt;
+  /*justify-content: center;*/
+}
+
+.direction {
+  font-family: pixel;
+  margin: auto;
+  font-size: 25pt;
+  /*justify-content: center;*/
+}
+
+.losing {
+  background-color: rgba(165, 168, 195, .3);
+  width: 100vw;
+  height: 100vh;
+  padding: 0px;
+  margin: 0px auto;
+  padding-top:20%;
+  text-align: center;
+  display: none;
+}
+
+.loserTxt {
+  font-family: pixel;
+  margin: auto;
+  font-size: 80pt;
+}
+
+.winning {
+  background-color: rgba(165, 168, 195, .3);
+  width: 100vw;
+  height: 100vh;
+  padding: 0px;
+  margin: 0px auto;
+  padding-top:20%;
+  text-align: center;
+  display: none;
+}
+
+.winTxt {
+  font-family: pixel;
+  margin: auto;
+  font-size: 80pt;
+}
+
+.timer {
+  width: 80px;
+  height: 80px;
+  background: pink;
+}
+
+
 
 .male {
   position: absolute;
@@ -53,12 +123,6 @@ body{
   /*background-color: pink;*/
 }
 
-
-body {
-
-  background: black;
-  /*position: relative;*/
-}
 
 /*making the different positions of the pictures into
 classes*/
