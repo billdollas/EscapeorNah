@@ -82,7 +82,12 @@ body{
 .timer {
   width: 80px;
   height: 80px;
-  background: pink;
+  background: black;
+  color: white;
+  font-family: pixel;
+  font-size: 30pt;
+  margin: auto;
+  text-align: center;
 }
 
 
@@ -100,8 +105,8 @@ body{
 }
 
 .leKey {
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  width: 30px;
   position: absolute;
   background: url('../keysticker.gif') no-repeat;
   background-size: cover;

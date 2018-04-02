@@ -224,7 +224,7 @@ randomKey();
 // this le function is making my timer countdown from 30secs down
 
 let count = 31;
-$('.timer').html(count);
+
 
 let inter = setInterval(function lose() {
 
@@ -232,12 +232,12 @@ let inter = setInterval(function lose() {
 
   if (count === 1) {
     clearInterval(inter);
-    // $('.timer').html(count);
     $('.room').hide();
     $('.losing').fadeIn('slow');
 }
 
   count--;
+  $('.timer').text(count);
 
   console.log(count);
 }, 1000);
