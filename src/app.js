@@ -1,9 +1,6 @@
 console.log('my guy');
 
 var currentBtn= 'up';
-var walkTime = 20;
-var maleStep = 2;
-var maleSpeed = 400;
 
 $(document).ready(function() {
 
@@ -12,6 +9,17 @@ $(document).ready(function() {
   $('.male').addClass('frontFaceStand');
 
     // });
+
+    $(document).ready(function() {
+
+    $('body').click(function() {
+
+      $('.back').fadeOut('13000', function() {
+
+      }); // ending of fadeout
+
+    });
+    });
 
 
   $(document).keydown(function(position){
@@ -34,23 +42,33 @@ $(document).ready(function() {
     // 37 is the left key 38 is the up key 39 is the right 40 is the down key
 
     if (male.x < key.x + key.width && male.x + male.width > key.x && male.y
-    < key.y + key.height && male.height + male.y > key.y) {
+    < key.y + key.height && male.height + male.y > key.y)
+    {
+
       console.log('male');
+      //console logging current position of male as key is pressed
+
+      // $('.leKey').removeClass('leKey');
+     //  so when i remove class of key, the randomization console logs error ?!
+
     }
+
+
+
+
+    // if (male === 'up' ) {
+    //   $('.male').addClass('backBackStand');
+    // }
+
+    // if (male === 'down'){
+    //   $('.male').addClass('frontFaceStand')
+    // }
   //   if (male.x > box.x + male.y > box.y && male.x + box.w < box.x + male.w && male.y +
   //   male.h < box.y + box.h) {
   //   console.log('not leaving box');
   // }
   }
   });
-
-  // wrap this if statement around box so male wont leave box
-  // const male= $('.male')[0].getBoundingClientRect();
-  // const box = $('.room')[0].getBoundingClientRect();
-  // if (male.x > box.x + male.y > box.y && male.x + box.w < box.x + male.w && male.y +
-  //   male.h < box.y + box.h) {
-  //   console.log('not leaving box');
-  // }
 
   //to contain male i have to find dimensions of the box and basically do the same if for
   //male and box, male x > box x, male y > box y, male x + width < box x +
@@ -75,30 +93,68 @@ $(document).ready(function() {
   // adding the y to the height of the room
   // guyPos -= yRoom;
 
+  // SO IVE ADDED A CLASS TO THE DIRECTION BUTTON UP SO IT CAN SHOW THE AVATAR
+  //BACK BUT WHEN I PRESS DOWN IT DOESNT WANT TO GO BACK TO THE FRONT FACE OF
+  //THE CHARACTER
 
-  if (direction === 'up' && male.y > -9) {
+  if (direction === 'up') {
+
+    $('.male').css('top', Number(np)-10 + 'px');
+    // $('.male').addClass('backBackStand');
+    //once i press up then down it stays at back
+    // $('.male').addClass('backGnaStep');
+    // $('.male').addClass('backLeftFwd');
+    // $('.male').addClass('backLeftStep');
+    // $('.male').addClass('backLeftTouch');
+    // $('.male').addClass('backLeftDone');
+    // $('.male').addClass('backRightUp');
+    // $('.male').addClass('backRightStep');
+    // $('.male').addClass('backFin');
+  }
+
+
+  if (direction === 'down') {
+    $('.male').css('top', Number(np)+10 + 'px');
+    $('.male').addClass('frontFaceStand');
+  }
+
+  // if (direction === 'left') {
+  //   $('.male').css('left', Number(npLeft)+ 10 + 'px');
+  //   $('.male').addClass('rightSideStand');
+  // }
+
+
+  if (direction === 'up' && male.y > 48) {
   $('.male').css('top', Number(np)-10 + 'px');
+  // $('.male').addClass('backBackStand');
+
  }
-  if (direction === 'down' && male.y < 376) {
 
 
+  if (direction === 'down' && male.y < 400) {
     $('.male').css('top', Number(np)+ 10 + 'px');
+    // $('.male').addClass('frontFaceStand');
 
     // alert(Number(np)+10);
-
   }
 
-  if (direction ==='left' && male.x < 713) {
+
+
+  if (direction ==='left' && male.x < 750) {
     $('.male').css('left', Number(npLeft)+ 10 + 'px');
+    // $('.male').addClass('rightSideStand');
+    // $('.male').addClass('');
   }
 
-  if(direction ==='right' && male.x > 273) {
+  if(direction ==='right' && male.x > 330) {
     $('.male').css('left', Number(npLeft) - 10 + 'px');
   }
 
 
 };
 
+
+//this }; gucci 127
 setInterval(randomKey, 5000);
 
 
@@ -136,6 +192,19 @@ function randomKey() {
 randomKey();
 
 })
+
+// function seconds () {
+
+//   var now = new Date().getTime();
+
+//   var secDown = lose - $.now();
+
+//   var seconds = Math.floor((secDown % (1000 * 60)) / 1000);
+
+//   console.log(seconds)
+//LOSING LOGIC SECONDS COUNTDOWN
+// }
+
 // END OF DOCUMENT BILLS
 
 
@@ -172,47 +241,8 @@ randomKey();
 
 
 
-//   switch (maleStep) {
-//     case 1 : $('#male').addClass(direction + 'rightSideStand');
-//     break;
-//     case 2 : $('#male').addClass(direction + 'rightSideFootL');
-//     break;
-//     case 3 : $('#male').addClass(direction + 'rightSideFootR');
-//     break;
-//     case 4 : $('#male').addClass(direction + 'rightSideFootUp');
-//     break;
-//     case 5 : $('#male').addClass(direction + 'rightSideFootToe');
-//     break;
-//     case 6 : $('#male').addClass(direction + 'rightSideFootDwn');
-//     break;
-//     case 7 : $('#male').addClass(direction + 'rightSideFootLBck');
-//     break;
-//     case 8 : $('#male').addClass(direction + 'rightSideFootLFrnt');
-//     break;
-//     case 9 : $('#male').addClass(direction + 'rightSideFootFin');
-//     break;
-// }
-// }
-//   switch(direction) {
-//     case'front':
-//     $('#male').animate({top: '+= 32'}, maleSpeed);
-//     break;
-//     case'back':
-//     if ($('#male').position().top > 0) {
-//       $('#male').animate({top: '-=32'}, maleSpeed);
-//     }
-//     break;
-//     case 'left':
-//     if ($('#male').position().left > 0) {
-//       $('#male').animate({left: '-= 32'}, maleSpeed);
-//     }
-//     break;
-//     case'right':
-//     $('#male').animate({left: '+=32'}, maleSpeed);
-//     break;
-//   }
-// }
-// });
+
+
 
 
 
