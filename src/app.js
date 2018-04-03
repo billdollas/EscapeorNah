@@ -182,7 +182,7 @@ $(document).ready(function() {
 };
 
 //this function is randomizing key within le box
-//this }; gucci 154
+//this }; gucci 182
 let intNumber = setInterval(randomKey, 1000);
 //original time 2000
 //clearInterval(intNumber)
